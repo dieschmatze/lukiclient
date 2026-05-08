@@ -17,6 +17,14 @@ jobs:
           java-version: 21
           distribution: temurin
           
+      - name: Setup Gradle Wrapper
+        run: |
+          if [ ! -f gradlew ]; then
+            curl -sL https://raw.githubusercontent.com/gradle/gradle/v8.12.0/gradlew -o gradlew
+            mkdir -p gradle/wrapper
+            curl -sL https://raw.githubusercontent.com/gradle/gradle/v8.12.0/gradle/wrapper/gradle-wrapper.jar -o gradle/wrapper/gradle-wrapper.jar
+          fi
+
       - name: Grant execute permission
         run: chmod +x gradlew
         
